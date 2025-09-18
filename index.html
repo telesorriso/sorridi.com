@@ -1,136 +1,148 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Telesorriso - Dentista urgente 24/7</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    body { font-family: sans-serif; margin: 0; padding: 0; background: #fff; color: #1e293b; }
-    header { padding: 16px; text-align: center; }
-    header img { height: 40px; }
-    .hero { text-align: center; padding: 40px 20px; }
-    .hero h1 { font-size: 28px; margin-bottom: 10px; }
-    .accent { color: #2563eb; }
-    form { max-width: 400px; margin: 20px auto; padding: 20px; border-radius: 8px; background: #f9fafb; }
-    input { width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 16px; }
-    button { width: 100%; padding: 14px; background: #10b981; color: #fff; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; }
-    button:disabled { background: #94a3b8; cursor: not-allowed; }
-    .notice { font-size: 12px; color: #64748b; margin-top: 8px; }
-    #status { margin-top: 10px; font-size: 14px; }
-    .features { display: flex; justify-content: center; gap: 16px; margin: 20px 0; flex-wrap: wrap; }
-    .features div { background: #ecfdf5; padding: 10px 16px; border-radius: 6px; font-size: 14px; }
-    .steps { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 40px 0; }
-    .steps div { max-width: 250px; background: #f8fafc; padding: 20px; border-radius: 8px; }
-    footer { text-align: center; padding: 20px; background: #f1f5f9; font-size: 14px; }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Telesorriso – Dentista urgente 24/7</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-  <header>
-    <img src="logo.png" alt="Telesorriso">
+  <!-- HEADER: solo logo, niente "Sei un dentista?" -->
+  <header class="header">
+    <div class="container header__inner">
+      <img src="assets/logo.png" alt="Telesorriso" class="logo" />
+    </div>
   </header>
 
-  <section class="hero">
-    <h1>Hai mal di denti?<br>Un dentista ti richiama in <span class="accent">30 secondi</span>.</h1>
-    <p>Inserisci il tuo numero: il dentista disponibile più vicino a te ti contatta subito. Servizio gratuito per i pazienti.</p>
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__left">
+        <h1 class="hero__title">Hai mal di denti?</h1>
+        <p class="hero__subtitle">
+          Un dentista ti richiama in <span class="highlight">30 secondi</span>.
+        </p>
+        <p class="hero__lead">
+          Inserisci il tuo numero: lo studio disponibile più vicino ti contatta subito
+          e ti fissa un appuntamento anche per <strong>oggi</strong>. Servizio gratuito per i pazienti.
+        </p>
 
-    <form id="callForm">
-      <input id="phone" type="tel" placeholder="+39 XXX XXX XXXX" required>
-      <button type="submit">Parla con un dentista ora</button>
-      <p class="notice">Premendo “Parla con un dentista ora” acconsento ad essere richiamato.</p>
-      <div id="status"></div>
-    </form>
+        <ul class="pills">
+          <li class="pill">✔ Oltre 2.000 dentisti</li>
+          <li class="pill">✔ Disponibile 24/7</li>
+          <li class="pill">✔ Visita in giornata</li>
+        </ul>
+      </div>
 
-    <div class="features">
-      <div>✔︎ Oltre 2.000 dentisti</div>
-      <div>✔︎ Disponibile 24/7</div>
-      <div>✔︎ Visita in giornata</div>
-    </div>
-  </section>
+      <!-- FORM: nessun campo Città/CAP, nessuna checkbox -->
+      <form id="callForm" class="card form" novalidate>
+        <label for="phone" class="label">Numero di telefono</label>
+        <input id="phone" type="tel" inputmode="tel" autocomplete="tel"
+               placeholder="+39 3XX XXX XXXX" class="input" required />
 
-  <section class="steps">
-    <div>
-      <h3>Selezione intelligente</h3>
-      <p>Individuiamo lo studio disponibile più vicino a te, in tempo reale.</p>
-    </div>
-    <div>
-      <h3>Zero attese</h3>
-      <p>Ti chiamiamo entro 30 secondi. Nessun centralino, solo il dentista.</p>
-    </div>
-    <div>
-      <h3>Gratis per i pazienti</h3>
-      <p>Non paghi nulla per usare Telesorriso. Parli e prenoti subito.</p>
-    </div>
-  </section>
+        <button class="btn btn-primary" type="submit">
+          Parla con un dentista ora
+        </button>
 
-  <footer>
-    © Telesorriso — Il tuo dentista, sempre online.
+        <p class="notice">
+          Premendo “Parla con un dentista ora” acconsento ad essere richiamato.
+        </p>
+
+        <div id="status" class="status" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <!-- VANTAGGI (restyling marketing, identico look) -->
+    <section class="benefits">
+      <div class="benefit">
+        <h3>Selezione intelligente</h3>
+        <p>Individuiamo lo studio disponibile più vicino a te, in tempo reale.</p>
+      </div>
+      <div class="benefit">
+        <h3>Zero attese</h3>
+        <p>Ti chiamiamo entro 30 secondi. Nessun centralino, solo il dentista.</p>
+      </div>
+      <div class="benefit">
+        <h3>Gratis per i pazienti</h3>
+        <p>Non paghi nulla per usare Telesorriso. Parli e prenoti subito.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER: senza link Privacy/Termini -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <small>© Telesorriso — Il tuo dentista, sempre online.</small>
+    </div>
   </footer>
 
   <script>
-  function norm(p){
-    let x=(p||"").replace(/\s+/g,"");
-    if (/^3\d{8,12}$/.test(x)) x = "+39" + x;
-    if (!x.startsWith("+")) x = "+" + x;
-    return x;
-  }
-
-  const form   = document.getElementById("callForm");
-  const phoneI = document.getElementById("phone");
-  const status = document.getElementById("status");
-  const btn    = form.querySelector("button[type=submit]");
-
-  const COOLDOWN_SEC = 120;
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const phone = norm(phoneI.value);
-    if (!/^\+\d{8,15}$/.test(phone)){
-      status.textContent = "Inserisci un numero valido (es. +39 3XX XXX XXXX).";
-      return;
+    // Normalizza: accetta 3xxxxxxxx e aggiunge +39; assicura formato E.164
+    function norm(p){
+      let x=(p||"").replace(/\s+/g,"");
+      if (/^3\\d{8,12}$/.test(x)) x = "+39" + x;   // mobile IT -> +39
+      if (!x.startsWith("+")) x = "+" + x;
+      return x;
     }
 
-    const k = "cooldown_"+phone;
-    const last = Number(localStorage.getItem(k) || 0);
-    const now  = Date.now();
-    if (now - last < COOLDOWN_SEC*1000){
-      const left = Math.ceil((COOLDOWN_SEC*1000 - (now - last))/1000);
-      status.textContent = `Richiesta già inviata. Riprova tra ${left}s.`;
-      return;
-    }
+    const form   = document.getElementById("callForm");
+    const phoneI = document.getElementById("phone");
+    const status = document.getElementById("status");
+    const btn    = form.querySelector("button[type=submit]");
 
-    status.textContent = "Un dentista ti sta per richiamare, rispondi!";
-    btn.disabled = true;
+    // antispam locale per evitare richieste ripetute ravvicinate
+    const COOLDOWN_SEC = 120;
 
-    try{
-      const res = await fetch("/.netlify/functions/call", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone })
-      });
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-      const txt = await res.text();
-      let data; try { data = JSON.parse(txt); } catch { data = { raw: txt }; }
-
-      if (!res.ok || data.ok === false){
-        if (res.status === 429 && data.cooldown_sec){
-          status.textContent = `Numero già chiamato di recente. Riprova tra ${data.cooldown_sec}s.`;
-        } else {
-          status.textContent = `Errore: ${data.error || data.raw || "Richiesta non riuscita"}`;
-        }
+      const phone = norm(phoneI.value);
+      if (!/^\\+\\d{8,15}$/.test(phone)){
+        status.textContent = "Inserisci un numero valido (es. +39 3XX XXX XXXX).";
         return;
       }
 
-      localStorage.setItem(k, String(Date.now()));
-    }catch(err){
-      status.textContent = "Errore di rete. Riprova.";
-    }finally{
-      btn.disabled = false;
-    }
-  });
-  </script>
+      // cooldown sul singolo numero
+      const k = "cooldown_"+phone;
+      const last = Number(localStorage.getItem(k) || 0);
+      const now  = Date.now();
+      if (now - last < COOLDOWN_SEC*1000){
+        const left = Math.ceil((COOLDOWN_SEC*1000 - (now - last))/1000);
+        status.textContent = `Richiesta già inviata. Riprova tra ${left}s.`;
+        return;
+      }
 
+      // Messaggio unico richiesto
+      status.textContent = "Un dentista ti sta per richiamare, rispondi!";
+      btn.disabled = true;
+
+      try{
+        const res = await fetch("/.netlify/functions/call", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ phone })
+        });
+
+        const txt = await res.text();
+        let data; try { data = JSON.parse(txt); } catch { data = { raw: txt }; }
+
+        if (!res.ok || data.ok === false){
+          if (res.status === 429 && data.cooldown_sec){
+            status.textContent = `Numero già chiamato di recente. Riprova tra ${data.cooldown_sec}s.`;
+          } else {
+            status.textContent = `Errore: ${data.error || data.raw || "Richiesta non riuscita"}`;
+          }
+          return;
+        }
+
+        // ok → salvo cooldown; lascio il messaggio già mostrato
+        localStorage.setItem(k, String(Date.now()));
+      }catch(err){
+        status.textContent = "Errore di rete. Riprova.";
+      }finally{
+        btn.disabled = false;
+      }
+    });
+  </script>
 </body>
 </html>
