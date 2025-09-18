@@ -3,229 +3,145 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sorridi.com – Trova subito un dentista</title>
-  <meta name="description" content="Hai mal di denti? Ti troviamo un dentista subito, 24/7. Inserisci il tuo numero: un dentista disponibile ti richiama entro 90 secondi per un appuntamento oggi. Gratis per i pazienti.">
-  <meta name="theme-color" content="#1D4ED8">
+  <title>Telesorriso – Un dentista ti richiama in 90 secondi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="theme-blue">
-<header class="nav">
-  <div class="container nav-inner">
-    <a class="brand" href="/"><img src="/assets/logo-sorridi.svg" alt="Sorridi.com" width="140" height="36"></a>
-    <a class="btn-link" href="/dentisti.html">Sei un dentista?</a>
-  </div>
-</header>
-
-<main>
-  <!-- HERO -->
-  <section class="hero container">
-    <div class="hero-copy">
-      <h1>Hai mal di denti? <br>Ti troviamo un dentista subito, 24/7.</h1>
-      <p>Inserisci il tuo numero: il dentista disponibile più vicino a te ti richiama entro <strong>90 secondi</strong> per darti un appuntamento <strong>oggi</strong>. Gratis per i pazienti. Già <strong>2.000 dentisti registrati</strong>.</p>
+<body>
+  <header class="header">
+    <div class="container inner">
+      <img src="assets/logo.png" alt="Telesorriso" class="logo">
+      <a class="btn-link" href="#">Sei un dentista?</a>
     </div>
+  </header>
 
-    <!-- Intercettiamo questo form via JS: niente invio pagina -->
-    <form id="instant-match" name="richiesta-callback" method="POST" class="hero-form" action="/collegamento.html" novalidate>
-      <div class="input-col">
-        <label for="phone" class="sr-only">Numero di telefono</label>
-        <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+39 3XX XXX XXXX" required>
-      </div>
-
-      <!-- i controlli geo restano visuali; non li usiamo ora -->
-      <div class="geo-group">
-        <button type="button" id="use-location" class="btn-alt full" disabled aria-disabled="true" title="Funzione in arrivo">Usa la mia posizione</button>
-        <div class="or">oppure</div>
-        <p id="geo-status" class="geo-status" aria-live="polite"></p>
-        <div class="city-wrap">
-          <label for="city" class="sr-only">Città o CAP</label>
-          <input id="city" name="city" type="text" placeholder="Città o CAP" disabled>
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Hai mal di denti?<br>Un dentista ti richiama in <span style="color:#0284c7">90 secondi</span>.</h1>
+        <p class="lead">Inserisci il tuo numero: lo studio disponibile più vicino ti contatta subito e ti fissa un appuntamento anche per <strong>oggi</strong>. Servizio gratuito per i pazienti.</p>
+        <div class="badges">
+          <div class="badge">✅ Oltre 2.000 dentisti</div>
+          <div class="badge">🕒 Disponibile 24/7</div>
+          <div class="badge">📅 Visita in giornata</div>
         </div>
       </div>
 
-      <label class="consent">
-        <input id="consent" name="consent" type="checkbox" required>
-        <span>Acconsento a essere ricontattato per questa richiesta. <a href="/privacy.html" target="_blank" rel="noopener">Privacy</a></span>
-      </label>
+      <form id="callForm" class="card form" novalidate>
+        <label for="phone">Numero di telefono</label>
+        <input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+39 3XX XXX XXXX" required>
 
-      <button type="submit" class="btn-primary">Trova subito un dentista</button>
-      
-      <p class="alt-link">Oppure <a href="/listing">vedi tutti i dentisti disponibili</a></p>
+        <label class="sr-only" for="city">Città o CAP</label>
+        <input id="city" type="text" placeholder="Città o CAP (opzionale)" disabled>
 
-      <p id="status" class="status" aria-live="polite"></p>
-    </form>
-  </section>
+        <label class="consent">
+          <input id="consent" type="checkbox" required>
+          <span>Acconsento a essere ricontattato per questa richiesta. <a href="#" target="_blank" rel="noopener">Privacy</a></span>
+        </label>
 
-  <!-- COME FUNZIONA -->
-  <section class="how container">
-    <h2>Come funziona Sorridi.com</h2>
-    <div class="steps">
-      <div class="step"><span class="badge">1</span><p>Inserisci il tuo numero e la tua posizione</p></div>
-      <div class="step"><span class="badge">2</span><p>Parli con un dentista entro 90 secondi</p></div>
-      <div class="step"><span class="badge">3</span><p>Ricevi subito il tuo appuntamento (per oggi!)</p></div>
-    </div>
-  </section>
-
-  <!-- TRUST -->
-  <section class="trust">
-  <div class="container badge-row" aria-label="Indicatori di fiducia">
-    <div class="badge-item">
-      <img src="/assets/badge-check.svg" alt="" width="28" height="28" loading="lazy">
-      <p><strong>2.000 dentisti</strong><br><span>registrati</span></p>
-    </div>
-    <div class="badge-item">
-      <img src="/assets/badge-check.svg" alt="" width="28" height="28" loading="lazy">
-      <p><strong>Disponibile 24/7</strong><br><span>sempre attivo</span></p>
-    </div>
-    <div class="badge-item">
-      <img src="/assets/badge-check.svg" alt="" width="28" height="28" loading="lazy">
-      <p><strong>Servizio gratuito</strong><br><span>per i pazienti</span></p>
-    </div>
-  </div>
-</section>
-
-  <!-- MISSION / ALGORITMO -->
-  <section class="mission container">
-      <div class="mission-copy">
-        <h2>Il motore intelligente che ti trova un dentista in tempo reale</h2>
-        <p>Sorridi.com utilizza un algoritmo di <strong>matching istantaneo</strong> che seleziona lo studio più vicino e disponibile, 24 ore su 24, 7 giorni su 7. In meno di 90 secondi ricevi la chiamata dal dentista, con appuntamento garantito in giornata.</p>
-      </div>
-      <div class="reviews">
-        <article class="review">
-          <p class="quote">“Trovato in 2 minuti, anche di domenica.”</p>
-          <p class="meta">— Maria R., Milano</p>
-        </article>
-        <article class="review">
-          <p class="quote">“Ho prenotato per la stessa giornata, servizio top.”</p>
-          <p class="meta">— Luca B., Como</p>
-        </article>
-        <article class="review">
-          <p class="quote">“Zero attese, mi ha richiamato subito il dentista.”</p>
-          <p class="meta">— Giulia S., Varese</p>
-        </article>
-      </div>
+        <button class="btn-primary" type="submit">Parla con un dentista ora</button>
+        <div id="status" class="status" aria-live="polite"></div>
+      </form>
     </section>
 
-  <!-- FAQ -->
-  <section class="faq container">
-    <h2>Domande frequenti</h2>
-    <details>
-      <summary>Il servizio è gratuito per i pazienti?</summary>
-      <p>Sì, sempre.</p>
-    </details>
-    <details>
-      <summary>In quanto tempo mi chiama il dentista?</summary>
-      <p>In media entro 90 secondi dalla richiesta.</p>
-    </details>
-    <details>
-      <summary>Quando posso usare il servizio?</summary>
-      <p>Sempre: 24 ore su 24, 7 giorni su 7.</p>
-    </details>
-    <details>
-      <summary>Posso scegliere io lo studio?</summary>
-      <p>Sì, puoi cliccare su <em>vedi tutti i dentisti disponibili</em> e accedere alla lista completa nella tua zona.</p>
-    </details>
-  
-  <section class="container">
-    <div class="cta-repeat">
-      <h2>Serve aiuto ora?</h2>
-      <a class="btn-primary" href="/">Trova subito un dentista</a>
+    <section class="section">
+      <div class="grid-3">
+        <div class="feature">
+          <h3>Selezione intelligente</h3>
+          <p>Individuiamo lo studio disponibile più vicino a te, in tempo reale.</p>
+        </div>
+        <div class="feature">
+          <h3>Zero attese</h3>
+          <p>Ti chiamiamo entro 90 secondi. Nessun centralino, solo il dentista.</p>
+        </div>
+        <div class="feature">
+          <h3>Gratis per i pazienti</h3>
+          <p>Non paghi nulla per usare Telesorriso. Parli e prenoti subito.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="cta">
+    <div class="container inner">
+      <div>
+        <h2 style="margin:0 0 6px">Serve aiuto adesso?</h2>
+        <small>Il nostro servizio è attivo 24 ore su 24, 7 giorni su 7.</small>
+      </div>
+      <div class="actions">
+        <a class="btn-outline" href="#">Vedi dentisti disponibili</a>
+        <a class="btn-primary" style="text-decoration:none;display:inline-block" href="#callForm">Richiedi la chiamata</a>
+      </div>
     </div>
   </section>
-</section>
-</main>
 
-<footer class="footer">
-  <div class="container">
-    <p><strong>Sorridi.com</strong> — Il tuo dentista, sempre online.</p>
-    <nav class="seo-links">
-      <span>Cerca un dentista urgente nella tua città:</span>
-      <a href="/seo/milano.html">Milano</a> ·
-      <a href="/seo/roma.html">Roma</a> ·
-      <a href="/seo/torino.html">Torino</a>
-    </nav>
-    <p class="legal"><a href="/privacy.html">Privacy</a> • <a href="/termini.html">Termini</a></p>
-  </div>
-</footer>
+  <footer class="footer">
+    <div class="container" style="padding:18px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+      <small>© Telesorriso — Il tuo dentista, sempre online.</small>
+      <small><a class="btn-link" href="#">Privacy</a> · <a class="btn-link" href="#">Termini</a></small>
+    </div>
+  </footer>
 
-<!-- Script integrato: chiama la Netlify Function e mostra messaggi puliti -->
-<script>
-  // Normalizza: accetta 3xxxxxxxx e aggiunge +39; assicura formato E.164
-  function norm(p){
-    let x=(p||"").replace(/\s+/g,"");
-    if (/^3\d{8,12}$/.test(x)) x = "+39" + x;
-    if (!x.startsWith("+")) x = "+" + x;
-    return x;
-  }
-
-  const form   = document.getElementById("instant-match");
-  const phoneI = document.getElementById("phone");
-  const consent = document.getElementById("consent");
-  const status = document.getElementById("status");
-  const submitBtn = form.querySelector("button[type=submit]");
-
-  // piccolo cooldown locale (evita doppie richieste per lo stesso numero)
-  const COOLDOWN_SEC = 120;
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    if (!consent.checked) {
-      status.textContent = "Devi accettare la Privacy per essere ricontattato.";
-      return;
+  <script>
+    function norm(p){
+      let x=(p||"").replace(/\s+/g,"");
+      if (/^3\d{8,12}$/.test(x)) x = "+39" + x;
+      if (!x.startsWith("+")) x = "+" + x;
+      return x;
     }
+    const form = document.getElementById("callForm");
+    const phoneI = document.getElementById("phone");
+    const consent = document.getElementById("consent");
+    const status = document.getElementById("status");
+    const btn = form.querySelector("button");
+    const COOLDOWN_SEC = 120;
 
-    const phone = norm(phoneI.value);
-    if (!/^\+\d{8,15}$/.test(phone)) {
-      status.textContent = "Inserisci un numero valido (es. +39 3XX XXX XXXX).";
-      return;
-    }
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!consent.checked){ status.textContent = "Devi accettare la Privacy per essere ricontattato."; return; }
+      const phone = norm(phoneI.value);
+      if (!/^\+\d{8,15}$/.test(phone)){ status.textContent = "Inserisci un numero valido (es. +39 3XX XXX XXXX)."; return; }
 
-    // Cooldown locale per numero
-    const key = "cooldown_"+phone;
-    const last = Number(localStorage.getItem(key) || 0);
-    const now = Date.now();
-    if (now - last < COOLDOWN_SEC*1000) {
-      const left = Math.ceil((COOLDOWN_SEC*1000 - (now - last))/1000);
-      status.textContent = `Richiesta già inviata. Riprova tra ${left}s.`;
-      return;
-    }
-
-    status.textContent = "Ti stiamo collegando… rispondi sull'app dello studio (interno 100).";
-    submitBtn.disabled = true;
-
-    try {
-      const res = await fetch("/.netlify/functions/call", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone })
-      });
-
-      const txt = await res.text();
-      let data; try { data = JSON.parse(txt); } catch { data = { raw: txt }; }
-
-      if (!res.ok || data.ok === false) {
-        // cooldown server (HTTP 429)
-        if (res.status === 429 && data.cooldown_sec) {
-          status.textContent = `Numero già chiamato di recente. Riprova tra ${data.cooldown_sec}s.`;
-        } else {
-          status.textContent = `Errore: ${data.error || data.raw || "Richiesta non riuscita"}`;
-        }
+      const k = "cooldown_"+phone;
+      const last = Number(localStorage.getItem(k) || 0);
+      const now = Date.now();
+      if (now - last < COOLDOWN_SEC*1000){
+        const left = Math.ceil((COOLDOWN_SEC*1000 - (now - last))/1000);
+        status.textContent = `Richiesta già inviata. Riprova tra ${left}s.`;
         return;
       }
 
-      // success: salviamo cooldown locale
-      localStorage.setItem(key, String(Date.now()));
-      status.textContent = "Ok! Stiamo chiamando lo studio e poi ti colleghiamo con il paziente.";
-    } catch (err) {
-      status.textContent = "Errore di rete. Riprova.";
-    } finally {
-      submitBtn.disabled = false;
-    }
-  });
-</script>
+      status.textContent = "Ti stiamo collegando… rispondi sull'app dello studio (interno 100).";
+      btn.disabled = true;
+
+      try{
+        const res = await fetch("/.netlify/functions/call", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ phone })
+        });
+        const txt = await res.text();
+        let data; try{ data = JSON.parse(txt); }catch{ data = { raw: txt }; }
+
+        if (!res.ok || data.ok === false){
+          if (res.status === 429 && data.cooldown_sec){
+            status.textContent = `Numero già chiamato di recente. Riprova tra ${data.cooldown_sec}s.`;
+          } else {
+            status.textContent = `Errore: ${data.error || data.raw || "Richiesta non riuscita"}`;
+          }
+          return;
+        }
+
+        localStorage.setItem(k, String(Date.now()));
+        status.textContent = "Ok! Stiamo chiamando lo studio e poi ti colleghiamo con il paziente.";
+      }catch(err){
+        status.textContent = "Errore di rete. Riprova.";
+      }finally{
+        btn.disabled = false;
+      }
+    });
+  </script>
 </body>
 </html>
