@@ -4,13 +4,13 @@
   --text:#0f172a;
   --muted:#475569;
   --blue:#2563eb;         /* evidenza "30 secondi" */
-  --cta:#10b981;          /* bottone verde */
-  --cta-dark:#0a8f6a;
+  --cta:#28a745;          /* bottone verde */
+  --cta-dark:#218838;
   --border:#e2e8f0;
   --shadow:0 10px 30px rgba(2,6,23,.06);
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0}
+html,body{margin:0;padding:0;overflow-x:hidden}
 body{
   font:16px/1.6 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background:var(--bg); color:var(--text);
@@ -49,12 +49,51 @@ body{
   width:100%;padding:14px 16px;border:1px solid var(--border);
   border-radius:12px;font-size:16px;margin-bottom:12px
 }
-.btn{display:inline-block}
-.btn-primary{
-  width:100%;padding:14px 16px;border:0;border-radius:12px;
-  background:var(--cta);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 10px 22px rgba(16,185,129,.25)
+
+/* Pulsante principale */
+button,
+.btn,
+button[type="submit"] {
+  display: block;             /* blocco */
+  margin: 0 auto;             /* centrato */
+  width: 100%;
+  max-width: 320px;           /* limite massimo */
+  font-size: 22px;            /* testo più grande */
+  font-weight: 700;           /* grassetto */
+  letter-spacing: 1px;        /* testo più largo */
+  text-align: center;
+  padding: 18px 28px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--cta);
+  color: #fff;
+  cursor: pointer;
+  animation: pulse 1.6s infinite;
+  transition: all 0.3s ease;
 }
-.btn-primary:hover{background:var(--cta-dark)}
+button:hover,
+.btn:hover,
+button[type="submit"]:hover {
+  background-color: var(--cta-dark);
+  transform: scale(1.05);
+}
+
+/* Effetto pulsazione */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.6);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 12px rgba(40, 167, 69, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+  }
+}
+
 .notice{font-size:12px;color:#64748b;margin:8px 0 0}
 .status{margin-top:8px;color:#334155;min-height:22px}
 
@@ -71,11 +110,27 @@ body{
 
 /* Footer */
 .footer{background:var(--card);border-top:1px solid var(--border);color:#64748b;margin-top:14px}
-.footer__inner{padding:18px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer__inner{padding:18px 0;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px}
 
 /* Responsive */
 @media (max-width:980px){
   .hero{grid-template-columns:1fr}
   .hero__title{font-size:34px}
   .hero__subtitle{font-size:22px}
+}
+@media (max-width:640px){
+  .container { padding: 16px; }
+  .card { margin: 0 8px; }
+  .pills { flex-direction: column; align-items: stretch; gap: 10px; }
+  .pill  { width: 100%; text-align: left; }
+  .benefits { grid-template-columns: 1fr; gap: 14px; }
+  .hero__title { font-size: 28px; line-height: 1.2; }
+  .hero__subtitle { font-size: 20px; }
+  button,
+  .btn,
+  button[type="submit"] {
+    font-size: 20px;
+    padding: 16px 24px;
+    max-width: 100%;
+  }
 }
