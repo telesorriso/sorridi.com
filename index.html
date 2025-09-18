@@ -1,124 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Telesorriso - Dentista Urgente</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      color: #222;
-    }
-    header {
-      padding: 20px;
-    }
-    header img {
-      height: 40px;
-    }
-    h1 {
-      margin-top: 20px;
-      font-size: 26px;
-      font-weight: bold;
-    }
-    h2 {
-      font-size: 20px;
-      font-weight: normal;
-      margin-bottom: 20px;
-    }
-    form {
-      background: #f9f9f9;
-      padding: 20px;
-      margin: 0 auto;
-      border-radius: 8px;
-      max-width: 400px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    input {
-      padding: 12px;
-      width: 100%;
-      margin-bottom: 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-    button {
-      background: #2ecc71;
-      border: none;
-      padding: 14px;
-      width: 100%;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:disabled {
-      background: #aaa;
-    }
-    p {
-      margin: 8px 0;
-      font-size: 14px;
-    }
-    .features {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    .features div {
-      background: #f1f1f1;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: bold;
-    }
-    .status {
-      margin-top: 12px;
-      font-size: 14px;
-      color: red;
-      font-weight: bold;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Telesorriso – Dentista urgente 24/7</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <img src="https://i.ibb.co/pfQ3sdc/telesorriso-logo.png" alt="Telesorriso Logo">
+  <!-- HEADER: solo logo -->
+  <header class="header">
+    <div class="container header__inner">
+      <img src="assets/logo.png" alt="Telesorriso" class="logo" />
+    </div>
   </header>
 
-  <main>
-    <h1>Hai mal di denti?</h1>
-    <h2>Un dentista ti richiama in <span style="color:#007bff;">30 secondi</span>.</h2>
-    <p>Inserisci il tuo numero: il dentista disponibile più vicino a te ti contatta subito.<br>Servizio gratuito per i pazienti.</p>
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__left">
+        <h1 class="hero__title">Hai mal di denti?</h1>
+        <p class="hero__subtitle">
+          Un dentista ti richiama in <span class="highlight">30 secondi</span>.
+        </p>
+        <p class="hero__lead">
+          Inserisci il tuo numero: lo studio disponibile più vicino ti contatta subito
+          e ti fissa un appuntamento anche per <strong>oggi</strong>. Servizio gratuito per i pazienti.
+        </p>
 
-    <form id="callForm">
-      <input type="tel" id="phone" placeholder="+39 3XX XXX XXXX" required>
-      <button type="submit">Parla con un dentista ora</button>
-      <p>Premendo “Parla con un dentista ora” acconsento ad essere richiamato.</p>
-      <div id="status" class="status"></div>
-    </form>
+        <ul class="pills">
+          <li class="pill">✔ Oltre 2.000 dentisti</li>
+          <li class="pill">✔ Disponibile 24/7</li>
+          <li class="pill">✔ Visita in giornata</li>
+        </ul>
+      </div>
 
-    <div class="features">
-      <div>✔ Oltre 2.000 dentisti</div>
-      <div>✔ Disponibile 24/7</div>
-      <div>✔ Visita in giornata</div>
-    </div>
+      <!-- FORM -->
+      <form id="callForm" class="card form" novalidate>
+        <label for="phone" class="label">Numero di telefono</label>
+        <input id="phone" type="tel" inputmode="tel" autocomplete="tel"
+               placeholder="+39 3XX XXX XXXX" class="input" required />
+
+        <button class="btn btn-primary" type="submit">
+          Parla con un dentista ora
+        </button>
+
+        <p class="notice">
+          Premendo “Parla con un dentista ora” acconsento ad essere richiamato.
+        </p>
+
+        <div id="status" class="status" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="benefits">
+      <div class="benefit">
+        <h3>Selezione intelligente</h3>
+        <p>Individuiamo lo studio disponibile più vicino a te, in tempo reale.</p>
+      </div>
+      <div class="benefit">
+        <h3>Zero attese</h3>
+        <p>Ti chiamiamo entro 30 secondi. Nessun centralino, solo il dentista.</p>
+      </div>
+      <div class="benefit">
+        <h3>Gratis per i pazienti</h3>
+        <p>Non paghi nulla per usare Telesorriso. Parli e prenoti subito.</p>
+      </div>
+    </section>
   </main>
 
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <small>© Telesorriso — Il tuo dentista, sempre online.</small>
+    </div>
+  </footer>
+
   <script>
-    // Normalizza il numero: accetta "3335829087" -> "+393335829087"
+    // Normalizza: accetta "333...." e aggiunge +39; garantisce formato E.164
     function norm(p){
-      let x = (p || "").replace(/\s+/g,"").replace(/^0+/,""); // rimuove spazi e zeri iniziali
-      if (/^3\d{7,10}$/.test(x)) {
-        // se inizia con 3 e ha la lunghezza giusta -> aggiungo prefisso Italia
-        x = "+39" + x;
-      }
-      if (!x.startsWith("+")) {
-        x = "+39" + x; // fallback: prefisso +39 se manca il "+"
-      }
+      let x = (p || "").replace(/\s+/g,"").replace(/^0+/,"");
+      if (/^3\d{7,10}$/.test(x)) x = "+39" + x;       // mobile IT senza prefisso
+      if (!x.startsWith("+")) x = "+39" + x;          // fallback se manca +
       return x;
     }
 
@@ -127,6 +90,7 @@
     const status = document.getElementById("status");
     const btn    = form.querySelector("button[type=submit]");
 
+    // antispam locale
     const COOLDOWN_SEC = 120;
 
     form.addEventListener("submit", async (e) => {
@@ -138,6 +102,7 @@
         return;
       }
 
+      // cooldown per numero
       const k = "cooldown_"+phone;
       const last = Number(localStorage.getItem(k) || 0);
       const now  = Date.now();
@@ -147,6 +112,7 @@
         return;
       }
 
+      // messaggio unico richiesto
       status.textContent = "Un dentista ti sta per richiamare, rispondi!";
       btn.disabled = true;
 
@@ -161,10 +127,15 @@
         let data; try { data = JSON.parse(txt); } catch { data = { raw: txt }; }
 
         if (!res.ok || data.ok === false){
-          status.textContent = `Errore: ${data.error || data.raw || "Richiesta non riuscita"}`;
+          if (res.status === 429 && data.cooldown_sec){
+            status.textContent = `Numero già chiamato di recente. Riprova tra ${data.cooldown_sec}s.`;
+          } else {
+            status.textContent = `Errore: ${data.error || data.raw || "Richiesta non riuscita"}`;
+          }
           return;
         }
 
+        // ok → salvo cooldown e lascio il messaggio
         localStorage.setItem(k, String(Date.now()));
       }catch(err){
         status.textContent = "Errore di rete. Riprova.";
